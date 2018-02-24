@@ -1,0 +1,23 @@
+{
+  "name": "boardgame",
+  "version": "0.0.1",
+  "description": "write test board game version of go fish using boardgame.io",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chigia001/boardgame.git"
+  },
+  "keywords": [
+    "boardgame",
+    "gofish"
+  ],
+  "author": "chigia001",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chigia001/boardgame/issues"
+  },
+  "homepage": "https://github.com/chigia001/boardgame#readme"
+}
