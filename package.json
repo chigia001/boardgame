@@ -27,6 +27,7 @@
     "react-dom": "^16.2.0"
   },
   "devDependencies": {
-    "eslint": "^4.18.1"
+    "eslint": "^4.18.1",
+    "lerna": "^2.9.0"
   }
 }
