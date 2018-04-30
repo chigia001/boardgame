@@ -2,18 +2,8 @@ export const CARD_SUITS = ['DIAMOND', 'CLUB', 'HEART', 'SPADE']
 
 export const CARD_RANKS = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A']
 
-export default class Card {
-  constructor (suit, rank) {
-    this._suit = suit
-    this._rank = rank
-    this._isReveal = false
-  }
+export const createCard = (suit, rank, isFaceUp = true) => ({
+  suit, rank, isFaceUp
+})
 
-  get suit () {
-    return this._isReveal ? this._suit : ''
-  }
-
-  get rank () {
-    return this._isReveal ? this._rank : ''
-  }
-}
+export const turnFace = (card, toFaceUp) => ({...card, isFaceUp: turnFace})
