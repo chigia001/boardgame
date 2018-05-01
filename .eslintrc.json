@@ -1,13 +1,13 @@
 {
   "extends": [
-    "standard",
-    "prettier",
-    "prettier/standard"
+    "plugin:lodash-fp/recommended",
+    "prettier-standard"
   ],
   "plugins": [
-    "standard",
+    "promise",
+    "lodash-fp",
     "prettier",
-    "promise"
+    "standard"
   ],
   "parserOptions": {
     "ecmaVersion": 2018,

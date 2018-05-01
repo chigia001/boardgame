@@ -12,7 +12,7 @@ const overideArrayMerge = _.mergeWith((objValue, srcValue) => {
 
 const goFish = Game({
   name: 'go-fish',
-  setup (numPlayers) {
+  setup(numPlayers) {
     return _.flow(
       createCardDeck,
       Random.Shuffle,
@@ -20,22 +20,20 @@ const goFish = Game({
     )(false)
   },
   moves: {
-    ask (G, ctx, targetPlayer, rank) {
-      let currentPlayer = _.get(ctx, 'currentPlayer')
+    ask(G, ctx, targetPlayer, rank) {
+      let currentPlayer = _.get('currentPlayer', ctx)
       let currentPlayerHand = _.get(['players', currentPlayer, 'hand'], G)
       let targetPlayerHand = _.get(['players', targetPlayer, 'hand'], G)
       let matchCards = _.filter({ rank }, targetPlayerHand)
 
       if (_.isEmpty(matchCards)) {
-        return _.merge(G,
-          {
-            players: {
-              [currentPlayer]: {
-                askFail: true
-              }
+        return _.merge(G, {
+          players: {
+            [currentPlayer]: {
+              askFail: true
             }
           }
-        )
+        })
       }
       return overideArrayMerge(G, {
         players: {

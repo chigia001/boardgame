@@ -1,17 +1,27 @@
 import _ from 'lodash/fp'
 import { CARD_SUITS, CARD_RANKS, createCard } from './Card'
 
-export const creatSet = (rank, isDefaultFaceUp) => _.map(suit => createCard(suit, rank, isDefaultFaceUp), CARD_SUITS)
+export const creatSet = (rank, isDefaultFaceUp) =>
+  _.map(suit => createCard(suit, rank, isDefaultFaceUp), CARD_SUITS)
 
-export const createCardDeck = (isDefaultFaceUp) => _.flatMap(rank => creatSet(rank, isDefaultFaceUp), CARD_RANKS)
+export const createCardDeck = isDefaultFaceUp =>
+  _.flatMap(rank => creatSet(rank, isDefaultFaceUp), CARD_RANKS)
 
 export const dealCard = (deck, numPlayers, maxNoCard) => {
   let totalCardDeal = maxNoCard ? numPlayers * maxNoCard : deck.length
   let players = _.flow(
     _.times(_.identity),
-    _.reduce((acc, index) => _.set([index], {
-      hand: []
-    }, acc), {})
+    _.reduce(
+      (acc, index) =>
+        _.set(
+          [index],
+          {
+            hand: []
+          },
+          acc
+        ),
+      {}
+    )
   )(numPlayers)
 
   let newDeck = []
@@ -29,4 +39,7 @@ export const dealCard = (deck, numPlayers, maxNoCard) => {
   }
 }
 
-export const sortCard = _.sortBy(({ rank, suit }) => _.indexOf(rank, CARD_RANKS) * 10 + _.indexOf(suit, CARD_SUITS))
+export const sortCard = _.sortBy(
+  ({ rank, suit }) =>
+    _.indexOf(rank, CARD_RANKS) * 10 + _.indexOf(suit, CARD_SUITS)
+)
